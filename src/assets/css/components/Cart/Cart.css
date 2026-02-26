@@ -1,0 +1,118 @@
+:root {
+  --earth-brown: #5a3e2b;
+  --dark-brown: #3a2518;
+  --light-beige: #f2e8d5;
+  --soft-beige: rgba(230, 219, 197, 0.6);
+  --accent-gold: #c7a27c;
+  --white: #ffffff;
+}
+.modal {
+  backdrop-filter: blur(8px);
+}
+.modal-content {
+  border-radius: 18px;
+  border: none;
+  background: linear-gradient(180deg, var(--light-beige), #fff);
+  box-shadow: 0 20px 50px rgba(58, 37, 24, 0.35);
+}
+.modal-header {
+  border-bottom: 1px solid rgba(90, 62, 43, 0.15);
+  padding: 1.4rem 1.8rem;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--earth-brown);
+}
+
+.modal-header .btn-close {
+  filter: brightness(0.4);
+}
+
+.modal-body {
+  padding: 1.5rem 1.8rem;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.cart-items {
+  display: grid;
+  grid-template-columns: 100px 1fr auto auto auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: var(--soft-beige);
+  border-radius: 14px;
+  border: 1px solid rgba(199, 162, 124, 0.25);
+}
+
+.cart-items img {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid rgba(90, 62, 43, 0.2);
+}
+.cart-item-details strong {
+  display: block;
+  font-size: 1.25rem;
+  color: var(--dark-brown);
+  margin-bottom: 0.25rem;
+}
+
+.cart-item-details p {
+  font-size: 1rem;
+  color: var(--earth-brown);
+  opacity: 0.85;
+  margin-bottom: 0.4rem;
+}
+
+.cart-item-total strong {
+  font-size: 1.15rem;
+  color: var(--dark-brown);
+  display: inline;
+}
+
+.cart-items {
+  position: relative;
+}
+
+.cart-quantity-controls button {
+  background: transparent;
+  color: #3a2518;
+  border-color: var(--soft-beige);
+}
+.cart-quantity-controls button:hover {
+  background: var(--accent-gold);
+  color: #3a2518;
+  border-color: var(--soft-beige);
+}
+
+.modal-footer {
+  border-top: 1px solid rgba(90, 62, 43, 0.15);
+  padding: 1.4rem 1.8rem;
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-footer h5 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--earth-brown);
+  justify-items: flex-start;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .cart-items {
+    grid-template-columns: 60px 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .cart-item-total {
+    grid-column: 2;
+    text-align: right;
+  }
+}

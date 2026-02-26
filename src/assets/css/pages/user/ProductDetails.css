@@ -1,0 +1,252 @@
+:root {
+  --earth-brown: #5a3e2b;
+  --dark-brown: #3a2518;
+  --light-beige: #f2e8d5;
+  --soft-beige: #e6dbc5;
+  --accent-gold: #c7a27c;
+}
+.outer-product-detials {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;                
+}
+
+.outer-product-detials button {
+  margin-bottom: 2rem;
+  display: inline-flex;
+  gap: 0.4rem;
+}
+
+
+.product-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  padding: 4rem 8%;
+}
+
+.product-image {
+  background: var(--soft-beige);
+  border-radius: 22px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+  overflow: hidden; 
+  min-height: 420px;
+}
+
+
+.main-image {
+  width: 100%;
+  height: 380px; 
+  object-fit: contain;
+  border-radius: 16px;
+  padding: 1rem;
+  display: block;
+}
+
+.image-thumbnail {
+  display: flex;
+  gap: 0.8rem;
+  overflow-x: auto;
+  padding-bottom: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.image-thumbnail img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 10px;
+  padding: 0.4rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  flex-shrink: 0; 
+}
+
+
+.image-thumbnail img.active {
+  border-color: var(--accent-gold);
+}
+
+.image-thumbnail img:hover {
+  transform: scale(1.05);
+}
+
+.product-info {
+  margin-left: 1rem;
+  padding-left: 1rem;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: var(--light-beige);
+  padding-bottom: 2rem;
+  padding-right: 1rem;
+  border-radius: 20px;
+}
+
+.product-info h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--earth-brown);
+}
+
+.category,
+.brand,
+.rating {
+  font-size: 1rem;
+  color: var(--dark-brown);
+  opacity: 0.85;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin: 0.8rem 0;
+}
+
+.tabs {
+  grid-column: span 2;
+  margin-top: 0.5rem;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 1.5rem;
+  border-bottom: 2px solid var(--soft-beige);
+}
+
+.tab-buttons button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.8rem 0;
+  cursor: pointer;
+  color: var(--dark-brown);
+  position: relative;
+}
+
+.tab-buttons button.active {
+  color: var(--earth-brown);
+}
+
+.tab-buttons button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--accent-gold);
+}
+
+.tab-content {
+  grid-column: span 2;
+  background: var(--soft-beige);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.tab-content p {
+  font-size: 1.05rem;
+  line-height: 1.7rem;
+  color: var(--dark-brown);
+}
+
+.dimensions {
+  margin-top: 0.2rem;
+}
+
+.dimensions p {
+  margin-bottom: 0.4rem;
+}
+
+.reviews {
+  grid-column: span 2;
+  margin-top: 0.2rem;
+}
+
+.review-section h3 {
+  font-size: 1.8rem;
+  color: var(--earth-brown);
+  margin-bottom: 1.5rem;
+}
+
+.review-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--soft-beige);
+  padding: 1.2rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.review-content {
+  flex: 1;
+  text-align: center;
+}
+
+.review-content h4 {
+  font-size: 1.2rem;
+  color: var(--earth-brown);
+  margin-bottom: 0.4rem;
+}
+
+.review-rating {
+  font-weight: 600;
+  color: var(--accent-gold);
+}
+
+.review-comment {
+  margin: 0.8rem 0;
+  color: var(--dark-brown);
+}
+
+.review-date {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.arrow {
+  background: var(--earth-brown);
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .product-details {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .tabs,
+  .tab-content,
+  .reviews {
+    grid-column: span 1;
+  }
+
+  .tab-buttons {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .main-image {
+    height: 260px;
+  }
+}

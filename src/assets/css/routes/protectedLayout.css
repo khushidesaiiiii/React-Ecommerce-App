@@ -1,0 +1,35 @@
+
+.protected-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.protected-layout .sidebar {
+  flex-shrink: 0;
+}
+
+.protected-children {
+  flex: 1;
+  overflow-y: auto;
+
+}
+
+.protected-children::-webkit-scrollbar {
+  width: 8px;
+}
+
+.protected-children::-webkit-scrollbar-thumb {
+  background: rgba(90, 62, 43, 0.35);
+  border-radius: 6px;
+}
+
+
+@media (max-width: 900px) {
+  .protected-layout {
+    flex-direction: column;
+  }
+
+  .protected-children {
+    padding: 2rem 1.5rem;
+  }
+}

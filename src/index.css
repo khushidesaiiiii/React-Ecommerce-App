@@ -1,0 +1,65 @@
+@import "./assets/css/components/Dashboard/Dashboard.css";
+@import "./assets/css/components/Dashboard/OrdersChart.css";
+@import "./assets/css/components/Dashboard/RevenueChart.css";
+@import "./assets/css/components/Dashboard/Sidebar.css";
+@import "./assets/css/components/Dashboard/TopStats.css";
+
+@import "./assets/css/components/Footer/Footer.css";
+
+@import "./assets/css/components/Home/Deal.css";
+@import "./assets/css/components/Home/Header.css";
+@import "./assets/css/components/Home/Home.css";
+
+@import "./assets/css/components/Login/Login.css";
+@import "./assets/css/components/Login/Signup.css";
+
+@import "./assets/css/components/ProductCard/ProductCard.css";
+@import "./assets/css/components/Profile/Profile.css";
+@import "./assets/css/components/QuickView/QuickView.css";
+@import "./assets/css/components/Search/SearchBar.css";
+
+@import "./assets/css/components/Cart/Cart.css";
+@import './assets/css/components/Cart/Checkout.css';
+
+@import "./assets/css/pages/user/AboutUs.css";
+@import "./assets/css/pages/user/Category.css";
+@import "./assets/css/pages/user/CategoryProduct.css";
+@import "./assets/css/pages/user/Contact.css";
+@import "./assets/css/pages/user/Faq.css";
+@import "./assets/css/pages/user/ProductDetails.css";
+@import './assets/css/pages/user/Searchresult.css';
+@import './assets/css/pages/user/AllProducts.css';
+@import './assets/css/pages/user/Wishlist.css';
+@import './assets/css/pages/user/Order.css';
+
+@import './assets/css/pages/admin/AdminUsers/AdminAddUser.css';
+@import './assets/css/pages/admin/AdminUsers/AdminDeleteuser.css';
+@import './assets/css/pages/admin/AdminUsers/AdminUpdateUser.css';
+@import "./assets/css/pages/admin/AdminUsers/AdminUsers.css";                                                                            
+
+@import "./assets/css/pages/admin/AdminProduct/AdminAddProduct.css";
+@import "./assets/css/pages/admin/AdminProduct/AdminAllProducts.css";
+@import "./assets/css/pages/admin/AdminProduct/AdminDeleteProduct.css";
+@import "./assets/css/pages/admin/AdminProduct/AdminUpdateProduct.css";
+
+
+@import "./assets/css/pages/admin/AdminCategories/AdminCategories.css";
+@import "./assets/css/pages/admin/AdminCategories/AdminCategoryProducts.css";
+
+@import "./assets/css/pages/admin/AdminOrders/AdminOrders.css";
+
+@import './assets/css/routes/protectedLayout.css';
+
+@import './assets/css/UI/Wishlist.css';
+
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  /* background: linear-gradient(90deg, var(--light-beige), #fff); */
+
+  background-color: linear-gradient(to bottom right, #F6F7DD, #fffff4);
+  /* background: linear-gradient(to bottom right, #e0effd, #aeddf0); */
+}
+

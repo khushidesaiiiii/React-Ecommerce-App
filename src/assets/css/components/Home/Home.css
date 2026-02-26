@@ -1,0 +1,99 @@
+:root {
+  --earth-brown: #5a3e2b;
+  --dark-brown: #3a2518;
+  --light-beige: #f2e8d5;
+  --soft-beige: #e6dbc5;
+  --accent-gold: #c7a27c;
+}
+
+.deal-seaction {
+  padding: 3rem 6%;
+  background: linear-gradient(170deg, var(--light-beige), #ffffff);
+}
+
+.deal-seaction h2 {
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--earth-brown);
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+}
+
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+}
+
+.carousel:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.deal-card {
+  min-width: 280px;
+  max-width: 280px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .carousel-track {
+    animation-duration: 35s;
+  }
+
+  .deal-card {
+    min-width: 240px;
+    max-width: 240px;
+  }
+}
+
+.home-product-section {
+  background: linear-gradient(180deg, var(--light-beige), #faf7ee);
+}
+
+.home-product-section h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--earth-brown);
+  text-align: center;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.5px;
+  padding: 3.5rem 8%;
+}
+
+@media (max-width: 900px) {
+  .home-product-section {
+    padding: 3rem 6%;
+  }
+
+  .home-product-section h2 {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .home-product-section {
+    padding: 2.5rem 5%;
+  }
+
+  .home-product-section h2 {
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+  }
+}

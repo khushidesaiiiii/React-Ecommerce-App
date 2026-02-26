@@ -1,0 +1,35 @@
+:root {
+  --earth-brown: #5a3e2b;
+  --dark-brown: #3a2518;
+  --light-beige: #f2e8d5;
+  --soft-beige: #e6dbc5;
+  --accent-gold: #c7a27c;
+}
+
+.button {
+  font-family: inherit; 
+  font-size: 1rem;  
+  font-weight: normal;
+  border: 1px solid var(--earth-brown);
+  position: relative;
+  border-radius: 10px;
+  background: var(--earth-brown);
+  color: var(--light-beige);
+  padding: 0.5rem 1rem; 
+  gap: 0.5rem;
+  margin-top: 0.45rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover,
+.button:active {
+  background: var(--dark-brown);
+  border-color: var(--dark-brown);
+}
+
+.button:focus {
+  outline: none;
+}

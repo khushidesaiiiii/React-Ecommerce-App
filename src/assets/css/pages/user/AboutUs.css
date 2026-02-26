@@ -1,0 +1,131 @@
+:root {
+  --earth-brown: #5a3e2b;
+  --dark-brown: #3a2518;
+  --light-beige: #f2e8d5;
+  --soft-beige: #e6dbc5;
+  --accent-gold: #c7a27c;
+}
+
+.about-us {
+  padding: 4rem 8%;
+  background: linear-gradient(90deg, var(--light-beige), #fff);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 3rem;
+}
+
+.about-us .content {
+  max-width: 650px;
+}
+
+.about-us .content h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--earth-brown);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.about-us .content p {
+  color: var(--dark-brown);
+  font-size: 1.05rem;
+  opacity: 0.9;
+  line-height: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-us .content h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--earth-brown);
+}
+
+.about-us .content h3 span {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent-gold);
+}
+
+.about-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.about-card {
+  background: var(--light-beige);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: .3s ease-in-out;
+}
+
+.about-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+}
+
+.about-card img {
+  width: 40%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.about-card-content {
+  width: 60%;
+  text-align: left;
+}
+
+.about-card-content h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--earth-brown);
+  margin-bottom: 0.5rem;
+}
+
+.about-card-content p {
+  font-size: .95rem;
+  color: var(--dark-brown);
+  line-height: 1.45rem;
+  opacity: .85;
+}
+
+@media (max-width: 700px) {
+  .about-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-card-content {
+    width: 100%;
+  }
+
+  .about-card img {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-us {
+    padding: 3rem 6%;
+  }
+
+  .about-us .content h2 {
+    font-size: 2.2rem;
+  }
+
+  .about-us .content h3 {
+    font-size: 1.5rem;
+  }
+}

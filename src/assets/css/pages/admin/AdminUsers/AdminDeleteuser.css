@@ -1,0 +1,96 @@
+:root {
+  --earth-brown: #5a3e2b;
+  --dark-brown: #3a2518;
+  --light-beige: #f2e8d5;
+  --soft-beige: #e6dbc5;
+  --accent-gold: #c7a27c;
+  --danger-red: #b6463a;
+}
+
+.delete-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.delete-modal {
+  background: linear-gradient(180deg, var(--light-beige), #ffffff);
+  padding: 2.6rem 2.8rem;
+  border-radius: 22px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.3);
+  animation: modalFade 0.3s ease;
+  text-align: center;
+}
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.delete-modal h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--earth-brown);
+  margin-bottom: 0.6rem;
+}
+
+.delete-modal h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--dark-brown);
+  margin-bottom: 1.2rem;
+}
+
+.delete-odal h3 strong {
+  color: var(--danger-red);
+}
+
+.delete-modal p {
+  font-size: 1rem;
+  line-height: 1.6rem;
+  color: var(--dark-brown);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.delete-modal button {
+  width: 100%;
+  margin-bottom: 0.7rem;
+}
+
+.delete-modal button:first-of-type {
+  background: var(--danger-red);
+  color: #fff;
+}
+
+.delete-modal button:first-of-type:hover {
+  background: #9e3b31;
+}
+
+.delete-modal button:last-of-type {
+  background: transparent;
+  color: var(--earth-brown);
+}
+
+@media (max-width: 480px) {
+  .delete-modal {
+    padding: 2rem 1.8rem;
+  }
+
+  .delete-modal h2 {
+    font-size: 1.4rem;
+  }
+}

@@ -18,7 +18,7 @@ export const loginUser = createAsyncThunk(
       if (!loginRes.ok) {
         throw new Error(loginData.message || "Login failed");
       }
-      debugger;
+
       const userRes = await fetch (`${baseUrl}/users/${loginData.id}`);
       const userData = await userRes.json();
       if(!userRes.ok){

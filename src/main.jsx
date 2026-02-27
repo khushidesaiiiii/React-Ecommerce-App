@@ -8,6 +8,12 @@ import App from "./App.jsx";
 import { store } from "./store/store.js";
 import { ToastContainer } from "react-toastify";
 
+const apiUrl = import.meta.env.VITE_API_URL
+const env = import.meta.env.VITE_ENV
+
+console.log("API:", apiUrl)
+console.log("Environment:", env)
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>

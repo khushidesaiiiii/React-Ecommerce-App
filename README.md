@@ -10,7 +10,7 @@ Evara is a modern, full-featured eCommerce web application built with **React + 
 
 ## 🚀 Live Demo
 
-👉 [https://evara-react-ecommerce-web-app.vercel.app/](https://evara-react-ecommerce-web-app.vercel.app/)
+👉 [https://evara-react-ecommerce-web-app.vercel.app/]([https://evara-react-ecommerce-web-app.vercel.app/](https://evara-react-ecommerce-web-pjjebi3f7-khushidesaiiiiis-projects.vercel.app/))
 
 ---
 

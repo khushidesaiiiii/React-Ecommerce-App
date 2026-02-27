@@ -15,7 +15,6 @@ export default function AboutUs() {
         <h3>
           Evara <span> - crafted with elegence</span>
         </h3>
-        <h3>Made by khushi</h3>
       </div>
       <div className="about-cards">
 

@@ -197,7 +197,7 @@ function Navbar() {
                 </div> */}
                 <div className="user-section">
                   {/* <img src={user.image} alt="User icon" className="usericon" /> */}
-                  <Link to="profile">
+                  <Link to="/profile">
                     <span className="username">
                       {user.firstname || user.username}
                     </span>

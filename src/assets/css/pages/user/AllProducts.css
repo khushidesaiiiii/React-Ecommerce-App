@@ -13,7 +13,7 @@
 }
 .user-product-page-buttons {
   display: grid;
-  grid-template-columns: auto 1fr auto auto; 
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
   gap: 1.5rem;
   margin-bottom: 2rem;
@@ -173,4 +173,93 @@
   .filters {
     min-width: 100%;
   }
+}
+
+.pagination {
+  --bs-pagination-color: #5a3e2b;
+  --bs-pagination-hover-color: #5a3e2b;
+  --bs-pagination-active-bg: #c7a27c;
+  --bs-pagination-active-border-color: #c7a27c;
+}
+
+.pagination-container {
+  background: #faf7ee;
+  padding: 12px 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-color: #5a3e2b;
+}
+
+.pagination {
+  margin: 0;
+  color: #5a3e2b;
+}
+
+.page-link {
+  color: #5a3e2b !important;
+  background-color: transparent !important;
+  border:#f3e8df;
+
+  border-radius: 6px;
+  margin: 0 4px;
+
+}
+
+.page-link:hover {
+  background-color: #3a2518 !important;
+  color: #fff !important;
+}
+
+.page-item.active .page-link {
+  background-color: #c7a27c !important;
+  border-color: #c7a27c !important;
+  color: #fff !important;
+}
+
+.page-link:focus {
+  box-shadow: none !important;
+  
+}
+
+.jump-to-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.jump-to-page form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.jump-to-page span {
+  font-weight: 500;
+  color: #5a3e2b;
+}
+
+.jump-to-page input {
+  width: 100px;
+  padding: 6px 10px;
+  border: 1px solid #d8c6b8;
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.jump-to-page input:focus {
+  border-color: #c7a27c;
+  box-shadow: 0 0 0 2px rgba(199, 162, 124, 0.2);
+}
+
+.jump-to-page button {
+  padding: 6px 14px;
+  border-radius: 6px;
+}
+
+.jump-to-page small {
+  color: #8a6b52;
+  font-size: 13px;
 }

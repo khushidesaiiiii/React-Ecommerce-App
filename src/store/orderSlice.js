@@ -28,6 +28,10 @@ const orderSlice = createSlice({
       state.selectOrder = action.payload;
     },
 
+    clearSelectedOrder(state) {
+      state.selectOrder = null;
+    },
+
     loadUserOrders(state, action) {
       const orders = loadOrders(action.payload);
       state.userOrders = Array.isArray(orders) ? orders : [];
@@ -63,6 +67,11 @@ const orderSlice = createSlice({
   },
 });
 
-export const { selectedOrder, loadUserOrders, addUserOrder, clearUserOrders } =
-  orderSlice.actions;
+export const {
+  selectedOrder,
+  clearSelectedOrder,
+  loadUserOrders,
+  addUserOrder,
+  clearUserOrders,
+} = orderSlice.actions;
 export default orderSlice.reducer;

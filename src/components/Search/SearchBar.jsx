@@ -21,6 +21,7 @@ export default function SearchBar() {
     if (!query.trim()) return;
 
     dispatch(searchProducts(query));
+    setQuery("");
     navigate("/search");
   }
 

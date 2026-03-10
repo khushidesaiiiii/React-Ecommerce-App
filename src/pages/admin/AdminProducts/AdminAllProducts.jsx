@@ -13,6 +13,7 @@ import AdminAddProduct from "./AdminAddProduct";
 import AdminDeleteProduct from "./AdminDeleteProduct.jsx";
 import Filters from "../../../components/Filters/index.jsx";
 import Loader from "../../../components/Loader/index.jsx";
+import ReactPaginate from "react-paginate";
 
 export default function AdminAllProducts() {
   const dispatch = useDispatch();
@@ -68,10 +69,38 @@ export default function AdminAllProducts() {
     setCurrentPage(1);
   }, [filters, sortIndex, itemsPerPage]);
 
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   //console.log(filteredProducts);
 
   const handleOpenFilters = () => {
     setOpenFilters(!openFilters);
+  };
+
+  const handlePageClick = (e) => {
+    setCurrentPage(e.selected + 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const indexOfLastProduct = currentPage * itemsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
+  const currentProducts = filteredProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct,
+  );
+
+  const handleJumpSubmit = (e) => {
+    e.preventDefault();
+    const pageNum = parseInt(jumpToPage);
+
+    if (!isNaN(pageNum) && pageNum >= 1 && pageNum <= totalPages) {
+      setCurrentPage(pageNum);
+      setJumpToPage("");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      toast.info(
+        `Please enter a valid page number between 1 and ${totalPages}`,
+      );
+    }
   };
 
   if (loading) return <Loader />;
@@ -135,7 +164,7 @@ export default function AdminAllProducts() {
       </div>
 
       <div className="all-products-grid">
-        {currentProducts ? (
+        {currentProducts && currentProducts.length > 0 ? (
           currentProducts.map((p) => (
             <div key={p.id}>
               <div className="all-product-card">
@@ -191,21 +220,21 @@ export default function AdminAllProducts() {
               breakLinkClassName={"page-link"}
               activeClassName={"active"}
             />
-          <div className="jump-to-page">
-            <form onSubmit={handleJumpSubmit}>
-              <span>Jump to page: </span>
-              <input
-                type="number"
-                min={1}
-                max={totalPages}
-                placeholder="Page #"
-                value={jumpToPage}
-                onChange={(e) => setJumpToPage(Number(e.target.value))}
-              />
-              <Button type="submit">Go</Button>
-            </form>
-            <small>Total Pages are {totalPages}</small>
-          </div>
+            <div className="jump-to-page">
+              <form onSubmit={handleJumpSubmit}>
+                <span>Jump to page: </span>
+                <input
+                  type="number"
+                  min={1}
+                  max={totalPages}
+                  placeholder="Page #"
+                  value={jumpToPage}
+                  onChange={(e) => setJumpToPage(Number(e.target.value))}
+                />
+                <Button type="submit">Go</Button>
+              </form>
+              <small>Total Pages are {totalPages}</small>
+            </div>
           </div>
         </div>
       )}

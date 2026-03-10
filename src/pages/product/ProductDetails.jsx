@@ -13,6 +13,7 @@ import {
 } from "../../store/productSlice";
 import { currencyFormatter } from "../../utils/currencyFormatter";
 import AddToCartButton from "../../UI/AddToCartButton";
+import Loader from "../../components/Loader";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -59,11 +60,10 @@ export default function ProductDetails() {
     navigate(`/category/${productDetails.category}`);
   }
 
-  if (loading) return <p className="para">Loading...</p>;
+  if (loading) return <Loader />;
   if (error) return <p className="para">{error}</p>;
-  if (!productDetails) return <p className="para">Loading......</p>;
+  if (!productDetails) return <Loader />;
 
-  
   return (
     <>
       <div style={{ marginTop: "2.5rem", marginLeft: "4rem" }}>
@@ -111,11 +111,7 @@ export default function ProductDetails() {
 
           <p className="rating">Ratings: {productDetails.rating} ⭐</p>
 
-          <AddToCartButton
-            product={productDetails}
-            userId={authUserId}
-          />
-          
+          <AddToCartButton product={productDetails} userId={authUserId} />
         </div>
         <div className="tabs">
           <div className="tab-buttons">

@@ -12,6 +12,7 @@ import Button from "../../UI/Button.jsx";
 import { fetchProducts, sortProducts } from "../../store/productSlice.js";
 import { SORT_OPTIONS } from "../../utils/sortOptions.js";
 import { toast } from "react-toastify";
+import Loader from "../../components/Loader/index.jsx";
 
 export default function AllProducts() {
   const navigate = useNavigate();
@@ -121,7 +122,7 @@ export default function AllProducts() {
     }
   };
 
-  if (loading) return <p className="para">Loading....</p>;
+  if (loading) return <Loader />;
   if (error) return <p className="para">{error}</p>;
 
   function handleNavigation() {

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { IoIosArrowRoundBack } from "react-icons/io";
 
 import Button from "../../UI/Button";
+import Loader from "../Loader";
 
 export default function Profile() {
   const authUser = useSelector((state) => state.auth.user);
@@ -31,7 +32,7 @@ export default function Profile() {
     }
   }
 
-  if (!profile) return <p className="para">Loading...</p>;
+  if (!profile) return <Loader />;
 
   return (
     <div className="profile-wrapper">

@@ -13,6 +13,7 @@ import Button from "../../../UI/Button";
 import AdminAddProduct from "../AdminProducts/AdminAddProduct";
 import AdminUpdateProduct from "../AdminProducts/AdminUpdateProduct";
 import AdminDeleteProduct from "../AdminProducts/AdminDeleteProduct";
+import Loader from "../../../components/Loader";
 
 export default function AdminCategoryProducts() {
   const { category } = useParams();
@@ -27,7 +28,7 @@ export default function AdminCategoryProducts() {
   useEffect(() => {
     if (category) {
       // console.log("found");
-      dispatch(fetchProductsByCategory({categoryName: category}));
+      dispatch(fetchProductsByCategory({ categoryName: category }));
       return () => {
         clearCategoryProducts();
       };
@@ -38,8 +39,8 @@ export default function AdminCategoryProducts() {
   const [editProduct, setEditProduct] = useState(null);
   const [deleteProduct, setDeleteProduct] = useState(null);
 
-  if (loading) return <p className="para">Loading...</p>;
-  if(error) return <p className="para">{error.message}</p>
+  if (loading) return <Loader />;
+  if (error) return <p className="para">{error.message}</p>;
 
   function handleNavigation() {
     navigate("/admin/category", { replace: true });
@@ -49,7 +50,7 @@ export default function AdminCategoryProducts() {
     <div className="admin-category-page">
       <div className="admin-category-header">
         <h2> {category}</h2>
-        <Button  onClick={handleNavigation} type="type">
+        <Button onClick={handleNavigation} type="type">
           <IoIosArrowRoundBack /> Back
         </Button>
         {/* <Button onClick={() => setAddOpen(true)}>

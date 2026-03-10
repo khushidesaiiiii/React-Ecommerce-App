@@ -12,7 +12,7 @@ import AdminUpdateProduct from "./AdminUpdateProduct.jsx";
 import AdminAddProduct from "./AdminAddProduct";
 import AdminDeleteProduct from "./AdminDeleteProduct.jsx";
 import Filters from "../../../components/Filters/index.jsx";
-import ReactPaginate from "react-paginate";
+import Loader from "../../../components/Loader/index.jsx";
 
 export default function AdminAllProducts() {
   const dispatch = useDispatch();
@@ -74,35 +74,7 @@ export default function AdminAllProducts() {
     setOpenFilters(!openFilters);
   };
 
-  const indeOfLastProduct = currentPage * itemsPerPage;
-  const indexOfFirstProduct = indeOfLastProduct - itemsPerPage;
-  const currentProducts = filteredProducts.slice(
-    indexOfFirstProduct,
-    indeOfLastProduct,
-  );
-  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-
-  const handlePageClick = (data) => {
-    setCurrentPage(data.selected + 1);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const handleJumpSubmit = (e) => {
-    e.preventDefault();
-    const pageNum = parseInt(jumpToPage);
-
-    if (!isNaN(pageNum) && pageNum >= 1 && pageNum <= totalPages) {
-      setCurrentPage(pageNum);
-      setJumpToPage("");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      toast.info(
-        `Please enter a valid page number between 1 and ${totalPages}`,
-      );
-    }
-  };
-
-  if (loading) return <p className="para">Loading....</p>;
+  if (loading) return <Loader />;
   if (error) return <p className="para">{error}</p>;
 
   return (

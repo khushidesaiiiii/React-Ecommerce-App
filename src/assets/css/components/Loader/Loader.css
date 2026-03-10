@@ -1,0 +1,43 @@
+.loading {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loading p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #3a2518;
+  animation: blink 1.4s infinite both;
+}
+
+.loading .spinner {
+  font-size: 24px;
+  animation: spin 1s linear infinite;
+  color: #3a2518;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}

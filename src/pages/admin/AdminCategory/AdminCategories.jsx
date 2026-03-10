@@ -8,6 +8,7 @@ import { BsShop } from "react-icons/bs";
 import Button from "../../../UI/Button";
 import { categoryImages } from "../../../utils/categoryImages";
 import { fetchCategories } from "../../../store/categorySlice";
+import Loader from "../../../components/Loader";
 
 export default function AdminCategories() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ export default function AdminCategories() {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  if (loading) return <p className="para">Loading...</p>;
+  if (loading) return <Loader />;
   if (error) return <p className="para">{error}</p>;
 
   function handleNavigation() {

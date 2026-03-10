@@ -26,6 +26,9 @@ export default function AdminAllProducts() {
   const [addOpen, setAddOpen] = useState(false);
   const [editItem, setEditItem] = useState(null);
   const [deleteItem, setDeleteItem] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [jumpToPage, setJumpToPage] = useState("");
+  const [itemsPerPage, setItemsPerPage] = useState(12);
 
   const [sortIndex, setSortIndex] = useState(0);
   useEffect(() => {
@@ -44,7 +47,7 @@ export default function AdminAllProducts() {
   });
 
   const filteredProducts = useMemo(() => {
-   let result = [...list];
+    let result = [...list];
 
     if (filters.category !== "all") {
       result = result.filter((p) => p.category === filters.category);
@@ -60,6 +63,10 @@ export default function AdminAllProducts() {
 
     return result;
   }, [list, filters]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filters, sortIndex, itemsPerPage]);
 
   //console.log(filteredProducts);
 
@@ -100,39 +107,108 @@ export default function AdminAllProducts() {
               />
             )}
           </div>
+          <div
+            className="items-per-page-wrapper"
+            style={{
+              background: "#c7a27c",
+              borderRadius: "8px",
+              padding: "2px 2px 2px 5px",
+            }}
+          >
+            <span>Show: </span>
+            <select
+              style={{ borderColor: "#5a3e2b" }}
+              value={itemsPerPage}
+              onChange={(e) => {
+                setItemsPerPage(Number(e.target.value));
+                setCurrentPage(1);
+              }}
+            >
+              {[12, 24, 48, 96].map((num) => (
+                <option key={num} value={num}>
+                  {num} items
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
 
       <div className="all-products-grid">
-        {filteredProducts.map((p) => (
-          <div key={p.id}>
-            <div className="all-product-card">
-              <div className="all-product-image">
-                <img src={p.thumbnail} alt={p.title} />
-              </div>  
-              <div className="all-product-info">
-                <h4>{p.title}</h4>
-                <p className="all-price">
-                  Price: <strong>{currencyFormatter.format(p.price)}</strong>
-                </p>
-                <p>Category: {p.category}</p>
+        {currentProducts ? (
+          currentProducts.map((p) => (
+            <div key={p.id}>
+              <div className="all-product-card">
+                <div className="all-product-image">
+                  <img src={p.thumbnail} alt={p.title} />
+                </div>
+                <div className="all-product-info">
+                  <h4>{p.title}</h4>
+                  <p className="all-price">
+                    Price: <strong>{currencyFormatter.format(p.price)}</strong>
+                  </p>
+                  <p>Category: {p.category}</p>
+                </div>
+                <Button
+                  type="type"
+                  onClick={() => {
+                    // console.log("Clicked");
+                    setEditItem(p);
+                  }}
+                >
+                  Edit
+                </Button>
+                <Button type="type" onClick={() => setDeleteItem(p)}>
+                  Delete
+                </Button>
               </div>
-              <Button
-                type="type"
-                onClick={() => {
-                  // console.log("Clicked");
-                  setEditItem(p);
-                }}
-              >
-                Edit
-              </Button>
-              <Button type="type" onClick={() => setDeleteItem(p)}>
-                Delete
-              </Button>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p>No matching Products found!</p>
+        )}
       </div>
+      {totalPages > 1 && (
+        <div className=" d-flex justify-content-center mt-5">
+          <div className="pagination-container">
+            <ReactPaginate
+              previousLabel={"«"}
+              nextLabel={"»"}
+              breakLabel={"..."}
+              pageCount={totalPages}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={3}
+              onPageChange={handlePageClick}
+              forcePage={currentPage - 1}
+              containerClassName={"pagination"}
+              pageClassName={"page-item"}
+              pageLinkClassName={"page-link"}
+              previousClassName={"page-item"}
+              previousLinkClassName={"page-link"}
+              nextClassName={"page-item"}
+              nextLinkClassName={"page-link"}
+              breakClassName={"page-item"}
+              breakLinkClassName={"page-link"}
+              activeClassName={"active"}
+            />
+          <div className="jump-to-page">
+            <form onSubmit={handleJumpSubmit}>
+              <span>Jump to page: </span>
+              <input
+                type="number"
+                min={1}
+                max={totalPages}
+                placeholder="Page #"
+                value={jumpToPage}
+                onChange={(e) => setJumpToPage(Number(e.target.value))}
+              />
+              <Button type="submit">Go</Button>
+            </form>
+            <small>Total Pages are {totalPages}</small>
+          </div>
+          </div>
+        </div>
+      )}
       {addOpen && <AdminAddProduct onClose={() => setAddOpen(false)} />}
       {editItem && (
         <AdminUpdateProduct

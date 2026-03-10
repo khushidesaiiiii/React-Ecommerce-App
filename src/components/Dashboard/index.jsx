@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import OrdersChart from "./components/OrdersChart";
 import RevenueChart from "./components/RevenueChart";
+import Loader from "../Loader/index";
 import TopStats from "./components/TopStats";
 import { fetchAdminDashboard } from "../../store/adminSlice";
 
@@ -18,7 +19,7 @@ export default function Dashboard() {
     dispatch(fetchAdminDashboard());
   }, [dispatch]);
 
-  if (loading) return <p className="para">Loading dashboard...</p>;
+  if (loading) return <Loader />;
   if (error) return <p className="para">{error}</p>;
 
   return (

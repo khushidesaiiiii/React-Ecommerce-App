@@ -8,6 +8,7 @@ import { BsShop } from "react-icons/bs";
 import Button from "../../UI/Button";
 import { fetchCategories } from "../../store/categorySlice";
 import { categoryImages } from "../../utils/categoryImages";
+import Loader from "../../components/Loader";
 // import Card from "../UI/Card";
 
 export default function Categories() {
@@ -28,7 +29,7 @@ export default function Categories() {
   }
   
   if (loading) {
-    return <p className="para"> Loading categories...</p>;
+    return <Loader />;
   }
   if (error) {
     return <p className="para">{error}</p>;

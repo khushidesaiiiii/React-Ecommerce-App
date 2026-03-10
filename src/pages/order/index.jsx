@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import Button from "../../UI/Button";
 import { fetchOrders } from "../../store/orderSlice";
+import Loader from "../../components/Loader";
 
 export default function Order() {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ export default function Order() {
     return [...userOrders, ...apiCart];
   }, [apiCart, userOrders]);
 
-  if(loading) return <p className="para">Loading...</p>
+  if(loading) return <Loader />
   if(error) return <p className="para">{error.message}</p>
 
   if (combinedOrders.length === 0) {

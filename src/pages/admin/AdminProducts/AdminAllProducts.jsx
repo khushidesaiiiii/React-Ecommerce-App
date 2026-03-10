@@ -12,6 +12,7 @@ import AdminUpdateProduct from "./AdminUpdateProduct.jsx";
 import AdminAddProduct from "./AdminAddProduct";
 import AdminDeleteProduct from "./AdminDeleteProduct.jsx";
 import Filters from "../../../components/Filters/index.jsx";
+import Loader from "../../../components/Loader/index.jsx";
 
 export default function AdminAllProducts() {
   const dispatch = useDispatch();
@@ -66,7 +67,7 @@ export default function AdminAllProducts() {
     setOpenFilters(!openFilters);
   };
 
-  if (loading) return <p className="para">Loading....</p>;
+  if (loading) return <Loader />;
   if (error) return <p className="para">{error}</p>;
 
   return (

@@ -10,6 +10,7 @@ import AdminUpdateUser from "./AdminUpdateUser";
 import AdminDeleteUser from "./AdminDeleteUser";
 import SearchBar from "../../../components/Search/AdminSearchBar";
 import { USER_SORT_OPTIONS } from "../../../utils/sortOptions";
+import Loader from "../../../components/Loader";
 
 export default function AdminUsers() {
   const { list = [], error, loading } = useSelector((state) => state.users);
@@ -65,7 +66,7 @@ export default function AdminUsers() {
     setOpenFilters(!openFilters);
   }
 
-  if (loading) return <p className="para">Loading...</p>;
+  if (loading) return <Loader />;
   if (error) return <p className="para">{error}</p>;
 
   return (

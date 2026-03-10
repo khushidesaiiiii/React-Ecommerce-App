@@ -12,6 +12,7 @@ import {
 import { SORT_OPTIONS } from "../../utils/sortOptions";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Filters from "../../components/Filters";
+import Loader from "../../components/Loader";
 
 export default function CategoryProduct() {
   const dispatch = useDispatch();
@@ -72,11 +73,11 @@ export default function CategoryProduct() {
     setOpenFilters(!openFilters);
   }
 
-  if (loading) return <p className="para">Loading...</p>;
+  if (loading) return <Loader />;
   if (error) return <p className="para">{error}</p>;
 
   return (
-    <>
+    <div className="category-product">
       <div className="category-title">
         <h2>{categoryName}</h2>
         <div className="admin-user-header-buttons">
@@ -128,6 +129,6 @@ export default function CategoryProduct() {
           ))
         )}
       </div>
-    </>
+    </div>
   );
 }

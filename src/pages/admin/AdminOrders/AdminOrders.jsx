@@ -9,6 +9,7 @@ import {
 } from "../../../store/orderSlice";
 import { fetchUsers } from "../../../store/userSlice";
 import Button from "../../../UI/Button";
+import Loader from "../../../components/Loader";
 
 export default function AdminOrders() {
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ export default function AdminOrders() {
     dispatch(selectedOrder(order));
   };
 
-  if (loading) return <p className="para">Loading...</p>;
+  if (loading) return <Loader />;
   if (error) return <p className="para">{error}</p>;
 
   return (

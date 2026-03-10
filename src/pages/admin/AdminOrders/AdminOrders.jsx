@@ -2,20 +2,42 @@ import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, CardBody, CardSubtitle, CardText, CardTitle } from "reactstrap";
 
-import { fetchOrders, selectedOrder } from "../../../store/orderSlice";
+import {
+  clearSelectedOrder,
+  fetchOrders,
+  selectedOrder,
+} from "../../../store/orderSlice";
+import { fetchUsers } from "../../../store/userSlice";
+import Button from "../../../UI/Button";
 
 export default function AdminOrders() {
   const dispatch = useDispatch();
+
   const { list, selectOrder, loading, error } = useSelector(
     (state) => state.orders,
   );
-  // console.log("list : ", list);
-  // const state = useSelector((state) => state);
-  // console.log("REDUX STATE:", state);
+
+  const users = useSelector((state) => state.users?.list);
 
   useEffect(() => {
     dispatch(fetchOrders());
+    dispatch(fetchUsers());
   }, [dispatch]);
+
+  const enrichedOrders = useMemo(() => {
+    if (!list?.length || !users?.length) {
+      return [];
+    }
+    return list?.map((cart) => {
+      const userMatch = users?.find((u) => u.id === cart.userId);
+      return {
+        ...cart,
+        fullName: userMatch
+          ? `${userMatch.firstName} ${userMatch.lastName}`
+          : "User",
+      };
+    });
+  }, [list, users]);
 
   const statusPaid = useMemo(() => {
     const map = {};
@@ -27,6 +49,18 @@ export default function AdminOrders() {
     return map;
   }, [list]);
 
+  const toggleSelectedOrder = (order) => {
+    if (selectOrder?.id === order.id) {
+      dispatch(clearSelectedOrder());
+      return;
+    }
+    if (selectOrder?.id !== order.id) {
+      dispatch(selectedOrder(order));
+      return;
+    }
+    dispatch(selectedOrder(order));
+  };
+
   if (loading) return <p className="para">Loading...</p>;
   if (error) return <p className="para">{error}</p>;
 
@@ -36,21 +70,25 @@ export default function AdminOrders() {
         <h2>Orders</h2>
         <div className="order-grid-header">
           <span>Order ID</span>
+          <span>Name</span>
           <span>User ID</span>
           <span>Items</span>
           <span>Status</span>
-          <span>Total</span>
+          <span style={{ textAlign: "-webkit-right" }}>Total</span>
         </div>
-        {list.map((order) => {
+        {enrichedOrders.map((order) => {
           return (
             <div
               key={order.id}
-              onClick={() => dispatch(selectedOrder(order))}
+              onClick={() => toggleSelectedOrder(order)}
               className={`order-row ${
                 selectOrder?.id === order.id ? "active" : ""
               }`}
             >
               <span className="order-id">#{order.id}</span>
+              <span className="order-id">
+                {order?.fullName ? order.fullName : "user"}
+              </span>
               <span className="order-user-id">{order.userId}</span>
               <span className="order-totalproducts">{order.totalProducts}</span>
               <span className={`statuspaid-${statusPaid[order.id]}`}>
@@ -64,7 +102,8 @@ export default function AdminOrders() {
       {selectOrder && (
         <div className="order-details">
           <div className="order-header">
-            <h3>order #{selectOrder.id}</h3>
+            <h2>order #{selectOrder.id}</h2>
+            <h3>{selectOrder.fullName}</h3>
             <h4>User: {selectOrder.userId}</h4>
           </div>
           <div className="order-products">

@@ -18,8 +18,7 @@ export const dealsData = [
     category: "skin-care",
     title: "Deal of the day",
     discount: "Flat 15% off ",
-    description:
-      "Buy your favourite products at discounted rates.",
+    description: "Buy your favourite products at discounted rates.",
   },
   {
     image: dressDeal,
@@ -27,7 +26,7 @@ export const dealsData = [
     category: "womens-dresses",
     title: "Mega Sale",
     discount: "Upto 60% off",
-    description: "Latest faishon for you at minimum price, shop now to enjoy the limited time offer",
+    description: "Latest faishon at minimum price, limited time offer",
   },
   {
     image: laptopDeal,

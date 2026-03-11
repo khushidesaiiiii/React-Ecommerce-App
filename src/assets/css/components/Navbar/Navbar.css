@@ -2,12 +2,12 @@
   --earth-brown: #5a3e2b;
   --dark-brown: #3a2518;
   --light-beige: #f2e8d5;
-  --soft-beige: rgba(230, 219, 197, 0.75); 
+  --soft-beige: rgba(230, 219, 197, 0.75);
   --accent-gold: #c7a27c;
 }
 
 .navbar {
-  width: 100%; 
+  width: 100%;
   display: flex;
   /* 84.12% */
   padding: 0.9rem 8%;
@@ -21,7 +21,7 @@
   top: 0;
   z-index: 999;
   border-bottom: 1px solid rgba(90, 62, 43, 0.15);
-  box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
 }
 
 .logo a {
@@ -32,14 +32,14 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   text-decoration: none;
-  transition: color .3s ease-in-out;
+  transition: color 0.3s ease-in-out;
 }
 
 .logo a:hover {
   color: var(--accent-gold);
 }
 
-.navlinks{
+.navlinks {
   display: flex;
   gap: 2.3rem;
   position: relative;
@@ -70,10 +70,10 @@
 }
 .nav-cart-btn button {
   position: relative;
-  height: 52px; 
+  height: 52px;
   width: 48px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(199, 162, 124, 0.35);
   display: flex;
@@ -82,11 +82,13 @@
   cursor: pointer;
   color: var(--earth-brown);
   font-size: 1.2rem;
-  transition: background 0.25s ease, transform 0.2s ease;
+  transition:
+    background 0.25s ease,
+    transform 0.2s ease;
 }
 
 .nav-cart-btn button:hover {
-  background: rgba(255,255,255,0.65);
+  background: rgba(255, 255, 255, 0.65);
   transform: translateY(-1px);
 }
 .cart-count {
@@ -103,7 +105,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 .user-section {
@@ -113,16 +115,18 @@
   gap: 0.75rem;
   padding: 0.35rem 0.7rem;
   border-radius: 40px;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(199, 162, 124, 0.35);
   transition: box-shadow 0.25s ease;
 }
 
-a:link, a:visited {
-  text-decoration: none; 
+a:link,
+a:visited {
+  text-decoration: none;
 }
-a:hover, a:active {
+a:hover,
+a:active {
   color: var(--accent-gold);
 }
 
@@ -141,7 +145,7 @@ a:hover, a:active {
   color: var(--accent-gold);
 }
 
-.usericon{
+.usericon {
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -149,11 +153,13 @@ a:hover, a:active {
   display: block;
   border: 2px solid var(--accent-gold);
   box-shadow: 0 2px 8px rgba(58, 37, 24, 0.25);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
   cursor: pointer;
 }
 
-.user-section button{
+.user-section button {
   position: relative;
   margin-bottom: 0.25rem;
   margin-top: 0.25rem;
@@ -176,6 +182,39 @@ a:hover, a:active {
 
   .user-section {
     gap: 0.5rem;
-    margin-top: 1rem  ;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navlinks {
+    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+
+    padding: 0 1rem;
+    font-size: 0.8rem;
+  }
+  .nav-cart-btn {
+    height: 20px;
+    width: 20px;
+    margin-top: 0rem;
+    gap: 1rem;
+  }
+  .auth-button {
+    gap: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .user-section {
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 }
